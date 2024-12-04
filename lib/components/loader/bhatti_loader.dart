@@ -20,7 +20,7 @@ class BhattiLoader extends StatelessWidget {
               height: 280,
             ),
 
-            const SpinKitChasingDots(color: Colors.white, size: 80.0)
+            const SpinKitThreeInOut(color: Colors.white, size: 40.0)
           ],
         ),
       )),

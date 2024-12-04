@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatefulWidget {
   final String label;
   final String hintText;
-  final String? helperText;
+  final String? helperText, suffix,prefix;
   final TextStyle? helperStyle;
   final Icon? icon;
   final TextInputType keyboardType;
@@ -11,6 +11,7 @@ class CustomTextField extends StatefulWidget {
   final String? errorText;
   final bool isObscure;
   final int? maxLines;
+
   final VoidCallback? onIconPressed; // Callback for the icon press
 
   const CustomTextField({
@@ -25,7 +26,8 @@ class CustomTextField extends StatefulWidget {
     this.isObscure = false,
     this.maxLines = 1,
     this.icon,
-    this.onIconPressed, // Initialize the callback
+    this.onIconPressed,
+    this.suffix, this.prefix, // Initialize the callback
   });
 
   @override
@@ -78,16 +80,31 @@ class _CustomTextFieldState extends State<CustomTextField> {
           onChanged: widget.onChanged,
           decoration: InputDecoration(
             hintText: widget.hintText,
+            prefixText: widget.prefix,
+            prefixStyle: const TextStyle(
+              fontFamily: 'poppins',
+              fontSize: 12,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+            suffixText: widget.suffix,
+            suffixStyle: const TextStyle(
+              fontFamily: 'poppins',
+              fontSize: 12,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
             suffixIcon: widget.isObscure
                 ? IconButton(
-              icon: Icon(
-                widget.isObscure
-                    ? Icons.visibility_off
-                    : Icons.visibility,
-                color: Colors.white,
-              ),
-              onPressed: widget.onIconPressed, // Trigger callback on icon press
-            )
+                    icon: Icon(
+                      widget.isObscure
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: Colors.white,
+                    ),
+                    onPressed:
+                        widget.onIconPressed, // Trigger callback on icon press
+                  )
                 : widget.icon,
             hintStyle: const TextStyle(
               color: Colors.grey,

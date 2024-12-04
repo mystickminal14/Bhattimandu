@@ -25,7 +25,6 @@ class _SignUpState extends State<SignUp> {
   bool _isPasswordVisible = false;
   String? userType = 'seller';
 
-
   @override
   Widget build(BuildContext context) {
     return isLoading
@@ -205,8 +204,9 @@ class _SignUpState extends State<SignUp> {
                         const SizedBox(height: 20),
                         CustomBhattiBtn(
                           text: 'Sign Up',
-                          onPressed:() async {
-                            print("minal Name: $name, Email: $email, Phone: $phone, Pass: $pass, Role: $userType");
+                          onPressed: () async {
+                            print(
+                                "minal Name: $name, Email: $email, Phone: $phone, Pass: $pass, Role: $userType");
 
                             setState(() {
                               isRegistered = true;
@@ -215,14 +215,15 @@ class _SignUpState extends State<SignUp> {
                               setState(() {
                                 isLoading = true;
                               });
-                              dynamic result = await _auth.registration(
-                                  context, email, pass, name, phone, userType!, '');
-if(result){
-  setState(() {
-    isLoading = false;
-  });
-  Navigator.pushReplacementNamed(context, '/sign_in');
-}
+                              dynamic result = await _auth.registration(context,
+                                  email, pass, name, phone, userType!, '');
+                              if (result) {
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                Navigator.pushReplacementNamed(
+                                    context, '/sign_in');
+                              }
                             }
                           },
                         ),

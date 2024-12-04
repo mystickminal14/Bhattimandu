@@ -1,5 +1,6 @@
 import 'package:bhattimandu/components/loader/bhatti_loader.dart';
 import 'package:bhattimandu/model/user_model.dart';
+import 'package:bhattimandu/pages/seller/add-liquor.dart';
 import 'package:bhattimandu/pages/buyer/buyer_dash.dart';
 import 'package:bhattimandu/pages/flashing_page.dart';
 import 'package:bhattimandu/pages/seller/seller.dart';
@@ -30,9 +31,9 @@ class _WrapperState extends State<Wrapper> {
 
     if (!_isLoad) {
       if (user.role == 'seller') {
-        return const Seller();
+        return const AddLiquor();
       } else if (user.role == 'buyer') {
-        return const BuyerDash( );
+        return const BuyerDash();
       } else {
         return const BhattiFlashingPage();
       }
