@@ -64,8 +64,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         Text(
           widget.label,
           style: const TextStyle(
-            fontFamily: 'roboto',
-            fontSize: 16,
+            fontFamily: 'poppins',
+            fontSize: 14,
             color: Color(0xffF5F5DC),
             fontWeight: FontWeight.w600,
           ),
@@ -91,8 +91,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 : widget.icon,
             hintStyle: const TextStyle(
               color: Colors.grey,
-              fontSize: 15,
-              fontFamily: 'roboto',
+              fontSize: 14,
+              fontFamily: 'poppins',
               fontWeight: FontWeight.w400,
             ),
             helperText: widget.helperText,
@@ -100,13 +100,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 const TextStyle(
                   fontSize: 12,
                   color: Colors.grey,
-                  fontFamily: 'Poppins',
+                  fontFamily: 'poppins',
                   fontWeight: FontWeight.w400,
                 ),
             errorText: widget.errorText,
             filled: true,
-            fillColor: const Color(0xff1C1C2E),
-            // fillColor: Colors.white,
+            // fillColor: const Color(0xff1C1C2E),
+            fillColor: Colors.black,
 
             enabledBorder: border,
             focusedBorder: border,

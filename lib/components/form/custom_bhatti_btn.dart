@@ -27,9 +27,10 @@ class CustomBhattiBtn extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-          fontSize: 24,
+          fontSize: 18,
           color: Colors.white,
-          fontFamily: 'roboto-bold',
+          fontFamily: 'poppins',
+          fontWeight: FontWeight.w400,
         ),
       ),
     );
