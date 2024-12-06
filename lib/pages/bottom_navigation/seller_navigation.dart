@@ -40,7 +40,6 @@ class _SellerNavigationState extends State<SellerNavigation> {
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           canvasColor: const Color(0xff1C1C2E),
-
         ),
         child: BottomNavigationBar(
           onTap: (index) {

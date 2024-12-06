@@ -82,6 +82,31 @@ class LiquorService {
     }
   }
 
+  Future<List<Map<String, dynamic>>> getSellerByID(String uid) async {
+    try {
+
+      final QuerySnapshot userSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .where(FieldPath.documentId, isEqualTo: uid)
+          .where('role', isEqualTo: 'seller')
+          .get();
+
+      if (userSnapshot.docs.isEmpty) {
+        return [];
+      }
+
+      final data = userSnapshot.docs.first.data() as Map<String, dynamic>;
+      return [
+        {
+          'user': {...data, 'id': userSnapshot.docs.first.id},
+        }
+      ];
+    } catch (e) {
+      throw Exception("Failed to fetch user data: $e");
+    }
+  }
+
+
   Future<List<Map<String, dynamic>>> getAllLiquorsWithUser() async {
     try {
       final QuerySnapshot liquorSnapshot = await FirebaseFirestore.instance
@@ -194,10 +219,12 @@ class LiquorService {
   Future<List<Map<String, dynamic>>> getLiquorsByCategoryAndUserWithDetails(
       String category, String userId) async {
     try {
+
+      print(userId);
       final QuerySnapshot liquorSnapshot = await FirebaseFirestore.instance
           .collection('liquors')
           .where('category', isEqualTo: category)
-          .where('created_by', isEqualTo: userId)
+          .where('createdBy', isEqualTo: userId)
           .get();
 
       if (liquorSnapshot.docs.isEmpty) {
@@ -260,6 +287,30 @@ class LiquorService {
   //     throw Exception("Failed to fetch liquor and user data: $e");
   //   }
   // }
+  Future updateLiquor(
+      BuildContext context, String liquorId, Map<String, dynamic> updates) async {
+    try {
+
+      DocumentReference liquorDocRef =
+      FirebaseFirestore.instance.collection('liquors').doc(liquorId);
+
+
+      await liquorDocRef.update(updates);
+
+      QuickAlert.showAlert(
+        context,
+        "Liquor updated successfully!",
+        AlertType.success,
+      );
+    } catch (e) {
+      // Handle and display error alert
+      QuickAlert.showAlert(
+        context,
+        "Error updating liquor profile: ${e.toString()}",
+        AlertType.error,
+      );
+    }
+  }
 
 
 }

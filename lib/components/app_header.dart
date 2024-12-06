@@ -82,7 +82,7 @@ class _AppHeaderState extends State<AppHeader> {
                     color: Colors.white,
                     fontFamily: 'lovelo',
                     fontWeight: FontWeight.w400,
-                    fontSize: 16),
+                    fontSize: 18),
               ),
               const SizedBox(
                 width: 18,

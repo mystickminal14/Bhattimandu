@@ -114,7 +114,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                       setState(() {
                                         liquorName = value;
                                       });
-                                    },
+                                    }, initialValue: '',
                                   ),
                                   const SizedBox(height: 12),
                                   Row(
@@ -199,7 +199,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                       setState(() {
                                         brandName = value;
                                       });
-                                    },
+                                    }, initialValue: '',
                                   ),
                                   const SizedBox(height: 12),
                                   Row(
@@ -222,7 +222,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                             setState(() {
                                               life = value;
                                             });
-                                          },
+                                          }, initialValue: '',
                                         ),
                                       ),
                                       const SizedBox(
@@ -248,7 +248,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                             setState(() {
                                               volume = value;
                                             });
-                                          },
+                                          }, initialValue: '',
                                         ),
                                       )
                                     ],
@@ -285,7 +285,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                             setState(() {
                                               type = value;
                                             });
-                                          },
+                                          }, initialValue: '',
                                         ),
                                       ),
                                       const SizedBox(
@@ -309,7 +309,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                             setState(() {
                                               origin = value;
                                             });
-                                          },
+                                          }, initialValue: '',
                                         ),
                                       )
                                     ],
@@ -339,7 +339,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                             setState(() {
                                               price = value;
                                             });
-                                          },
+                                          }, initialValue: '',
                                         ),
                                       ),
                                       const SizedBox(
@@ -364,7 +364,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                             setState(() {
                                               stock = value;
                                             });
-                                          },
+                                          }, initialValue: '',
                                         ),
                                       )
                                     ],
@@ -386,7 +386,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                       setState(() {
                                         desc = value;
                                       });
-                                    },
+                                    }, initialValue: '',
                                   ),
                                   const SizedBox(
                                     height: 12,
@@ -422,6 +422,7 @@ class _AddLiquorState extends State<AddLiquor> {
                                         setState(() {
                                           isLoading = false;
                                         });
+                                        Navigator.pushReplacementNamed(context, '/liquors');
                                       }
                                     },
                                   )

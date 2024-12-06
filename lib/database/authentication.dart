@@ -158,7 +158,7 @@ class AuthenticationService {
   Future<void> userSignOut(BuildContext context) async {
     try {
       await _auth.signOut();
-      Navigator.pushReplacementNamed(context, '/login');
+      Navigator.pushReplacementNamed(context, '/sign_in');
       QuickAlert.showAlert(
         context,
         "You have successfully logged out.",

@@ -1,3 +1,4 @@
+import 'package:bhattimandu/components/liquor_card/liqour_detail.dart';
 import 'package:bhattimandu/components/loader/bhatti_loader.dart';
 import 'package:bhattimandu/database/authentication.dart';
 import 'package:bhattimandu/firebase_options.dart';
@@ -6,6 +7,7 @@ import 'package:bhattimandu/pages/bottom_navigation/seller_navigation.dart';
 import 'package:bhattimandu/pages/seller/add-liquor.dart';
 import 'package:bhattimandu/pages/flashing_page.dart';
 import 'package:bhattimandu/pages/seller/seller.dart';
+import 'package:bhattimandu/pages/seller/view_liquor.dart';
 import 'package:bhattimandu/pages/session/sign_in.dart';
 import 'package:bhattimandu/pages/session/sign_up.dart';
 import 'package:bhattimandu/wrapper.dart';
@@ -36,6 +38,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           // scaffoldBackgroundColor: const Color(0xff1C1C2E),
           scaffoldBackgroundColor:  Colors.black,
+          cardColor: const Color(0xff1C1C2E),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             selectedLabelStyle: TextStyle(fontFamily:'lovelo',fontSize: 11, fontWeight: FontWeight.bold),
             unselectedLabelStyle: TextStyle(fontFamily:'lovelo',fontSize: 10),
@@ -57,13 +60,14 @@ class MyApp extends StatelessWidget {
         ),
 
         routes: {
-          '/': (context) => const SellerNavigation(index: 2),
+          '/': (context) => const BhattiFlashingPage(),
           '/add_liquor': (context) => const SellerNavigation(index: 2),
           '/orders': (context) => const SellerNavigation(index: 3),
           '/liquors': (context) => const SellerNavigation(index: 1),
           '/seller_account': (context) => const SellerNavigation(index: 4),
           '/wrapper': (context) => const Wrapper(),
           '/bhatti': (context) => const BhattiFlashingPage(),
+          '/detail': (context) => const LiqourDetail(),
           '/sign_in': (context) => const SignIn(),
           '/sign_up': (context) => const SignUp()
         },

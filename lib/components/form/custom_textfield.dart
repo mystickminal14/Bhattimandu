@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatefulWidget {
   final String label;
   final String hintText;
-  final String? helperText, suffix,prefix;
+  final String? helperText, suffix, prefix;
   final TextStyle? helperStyle;
   final Icon? icon;
   final TextInputType keyboardType;
@@ -11,8 +11,8 @@ class CustomTextField extends StatefulWidget {
   final String? errorText;
   final bool isObscure;
   final int? maxLines;
-
-  final VoidCallback? onIconPressed; // Callback for the icon press
+  final VoidCallback? onIconPressed;
+  final String? initialValue; // Initial value for the field
 
   const CustomTextField({
     super.key,
@@ -27,7 +27,9 @@ class CustomTextField extends StatefulWidget {
     this.maxLines = 1,
     this.icon,
     this.onIconPressed,
-    this.suffix, this.prefix, // Initialize the callback
+    this.suffix,
+    this.prefix,
+     this.initialValue,
   });
 
   @override
@@ -36,12 +38,11 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   late TextEditingController _controller;
-  bool _isFocused = false;
 
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
+    _controller = TextEditingController(text: widget.initialValue);
   }
 
   @override
@@ -74,6 +75,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         const SizedBox(height: 5),
         TextField(
+          controller: _controller,
           obscureText: widget.isObscure,
           keyboardType: widget.keyboardType,
           maxLines: widget.maxLines,
@@ -96,15 +98,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             suffixIcon: widget.isObscure
                 ? IconButton(
-                    icon: Icon(
-                      widget.isObscure
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: Colors.white,
-                    ),
-                    onPressed:
-                        widget.onIconPressed, // Trigger callback on icon press
-                  )
+              icon: Icon(
+                widget.isObscure
+                    ? Icons.visibility_off
+                    : Icons.visibility,
+                color: Colors.white,
+              ),
+              onPressed: widget.onIconPressed,
+            )
                 : widget.icon,
             hintStyle: const TextStyle(
               color: Colors.grey,
@@ -113,18 +114,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
               fontWeight: FontWeight.w400,
             ),
             helperText: widget.helperText,
-            helperStyle: widget.helperStyle ??
-                const TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey,
-                  fontFamily: 'poppins',
-                  fontWeight: FontWeight.w400,
-                ),
+            helperStyle: widget.helperStyle ?? const TextStyle(
+              fontSize: 12,
+              color: Colors.grey,
+              fontFamily: 'poppins',
+              fontWeight: FontWeight.w400,
+            ),
             errorText: widget.errorText,
             filled: true,
-            // fillColor: const Color(0xff1C1C2E),
             fillColor: Colors.black,
-
             enabledBorder: border,
             focusedBorder: border,
           ),
