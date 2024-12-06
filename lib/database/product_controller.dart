@@ -105,6 +105,29 @@ class LiquorService {
       throw Exception("Failed to fetch user data: $e");
     }
   }
+  Future<List<Map<String, dynamic>>> getBuyerByID(String uid) async {
+    try {
+
+      final QuerySnapshot userSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .where(FieldPath.documentId, isEqualTo: uid)
+          .where('role', isEqualTo: 'buyer')
+          .get();
+
+      if (userSnapshot.docs.isEmpty) {
+        return [];
+      }
+
+      final data = userSnapshot.docs.first.data() as Map<String, dynamic>;
+      return [
+        {
+          'user': {...data, 'id': userSnapshot.docs.first.id},
+        }
+      ];
+    } catch (e) {
+      throw Exception("Failed to fetch user data: $e");
+    }
+  }
 
 
   Future<List<Map<String, dynamic>>> getAllLiquorsWithUser() async {
