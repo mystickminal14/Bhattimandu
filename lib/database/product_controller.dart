@@ -183,39 +183,39 @@ class LiquorService {
       throw Exception("Failed to fetch liquor data: $e");
     }
   }
-  // Future<List<Map<String, dynamic>>> getAllLiquorsCatWithUsers(String category) async {
-  //   try {
-  //     final QuerySnapshot liquorSnapshot = await FirebaseFirestore.instance
-  //         .collection('liquors')
-  //         .where('category', isEqualTo: category)
-  //         .get();
-  //
-  //     final userIds = liquorSnapshot.docs
-  //         .map((doc) => doc['user_id'] as String)
-  //         .toSet();
-  //
-  //     final QuerySnapshot userSnapshot = await FirebaseFirestore.instance
-  //         .collection('users')
-  //         .where(FieldPath.documentId, whereIn: userIds.toList())
-  //         .get();
-  //
-  //     final userMap = {
-  //       for (var doc in userSnapshot.docs) doc.id: doc.data() as Map<String, dynamic>
-  //     };
-  //
-  //     return liquorSnapshot.docs.map((liquorDoc) {
-  //       final liquorData = liquorDoc.data() as Map<String, dynamic>;
-  //       final userId = liquorData['user_id'];
-  //       final userData = userMap[userId];
-  //       return {
-  //         'liquor': {...liquorData, 'id': liquorDoc.id},
-  //         'user': userData,
-  //       };
-  //     }).toList();
-  //   } catch (e) {
-  //     throw Exception("Failed to fetch liquors with user data: $e");
-  //   }
-  // }
+  Future<List<Map<String, dynamic>>> getAllLiquorsCatWithUsers(String category) async {
+    try {
+      final QuerySnapshot liquorSnapshot = await FirebaseFirestore.instance
+          .collection('liquors')
+          .where('category', isEqualTo: category)
+          .get();
+
+      final userIds = liquorSnapshot.docs
+          .map((doc) => doc['user_id'] as String)
+          .toSet();
+
+      final QuerySnapshot userSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .where(FieldPath.documentId, whereIn: userIds.toList())
+          .get();
+
+      final userMap = {
+        for (var doc in userSnapshot.docs) doc.id: doc.data() as Map<String, dynamic>
+      };
+
+      return liquorSnapshot.docs.map((liquorDoc) {
+        final liquorData = liquorDoc.data() as Map<String, dynamic>;
+        final userId = liquorData['user_id'];
+        final userData = userMap[userId];
+        return {
+          'liquor': {...liquorData, 'id': liquorDoc.id},
+          'user': userData,
+        };
+      }).toList();
+    } catch (e) {
+      throw Exception("Failed to fetch liquors with user data: $e");
+    }
+  }
   Future<List<Map<String, dynamic>>> getLiquorsByCategory(String category) async {
     try {
       final QuerySnapshot querySnapshot = await FirebaseFirestore.instance

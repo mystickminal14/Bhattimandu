@@ -55,16 +55,15 @@ class _BuyerNavigationState extends State<BuyerNavigation> {
           unselectedItemColor: const Color(0xFF6B7380), // Unselected item color
           items: const [
             BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.dashcube),
+              icon: FaIcon(FontAwesomeIcons.wineBottle),
               label: "Liquors",
             ),
             BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.wineBottle),
+              icon: FaIcon(FontAwesomeIcons.cartShopping),
               label: "My Cart",
-
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.liquor_sharp),
+              icon: FaIcon(FontAwesomeIcons.dashcube),
               label: "Dashboard",
             ),
             BottomNavigationBarItem(

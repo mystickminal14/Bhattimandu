@@ -20,9 +20,6 @@ class _LiquorCategoryState extends State<LiquorCategory> {
             AppHeader(
               title: 'LiquorCategory',
             ),
-
-
-            // Body Content
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0,vertical:15),
