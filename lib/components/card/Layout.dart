@@ -68,7 +68,7 @@ class _LayoutState extends State<Layout> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ViewLiquorData(
+                          builder: (context) => ViewLiquor(
                             liquorId: liquorId,
                           ),
                         ),

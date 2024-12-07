@@ -2,7 +2,6 @@ import 'package:bhattimandu/model/user_model.dart';
 import 'package:bhattimandu/pages/seller/add-liquor.dart';
 import 'package:bhattimandu/pages/seller/liquors.dart';
 import 'package:bhattimandu/pages/seller/order-list.dart';
-import 'package:bhattimandu/pages/seller/seller.dart';
 import 'package:bhattimandu/pages/seller/seller_account.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -29,7 +28,6 @@ class _SellerNavigationState extends State<SellerNavigation> {
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel?>(context);
     List screenList = [
-      const Seller(),
       const Liquors(),
       const AddLiquor(),
       const OrderList(),
@@ -54,11 +52,7 @@ class _SellerNavigationState extends State<SellerNavigation> {
           selectedItemColor: Colors.white, // Selected item color
           unselectedItemColor: const Color(0xFF6B7380), // Unselected item color
           items: const [
-            BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.dashcube),
-              label: "Dashboard",
-            ),
-            BottomNavigationBarItem(
+           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.wineBottle),
               label: "Liquors",
 

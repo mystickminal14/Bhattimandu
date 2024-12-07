@@ -2,10 +2,7 @@ import 'package:bhattimandu/components/loader/bhatti_loader.dart';
 import 'package:bhattimandu/model/user_model.dart';
 import 'package:bhattimandu/pages/bottom_navigation/buyer_navigation.dart';
 import 'package:bhattimandu/pages/bottom_navigation/seller_navigation.dart';
-import 'package:bhattimandu/pages/seller/add-liquor.dart';
-import 'package:bhattimandu/pages/buyer/buyer_dash.dart';
 import 'package:bhattimandu/pages/flashing_page.dart';
-import 'package:bhattimandu/pages/seller/seller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +30,7 @@ class _WrapperState extends State<Wrapper> {
 
     if (!_isLoad) {
       if (user.role == 'seller') {
-        return const SellerNavigation(index: 2);
+        return const SellerNavigation(index: 1);
       } else if (user.role == 'buyer') {
         return const BuyerNavigation(index: 2);
       } else {

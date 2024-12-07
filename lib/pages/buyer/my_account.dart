@@ -145,11 +145,7 @@ class _MyAccountState extends State<MyAccount> {
                           Navigator.pushReplacementNamed(
                               context, '/orders');
                         }),
-                        const SizedBox(height: 5),
-                        _buildTiles(const Icon(Icons.reviews,color: Colors.white,), 'Reviews', () {
-                          Navigator.pushReplacementNamed(
-                              context, '/liquors');
-                        }),
+
                         const SizedBox(height: 5),
                         _buildTiles(
                             const Icon(Icons.help,color: Colors.white,), 'Help and Support', () {}),

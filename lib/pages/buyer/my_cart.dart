@@ -188,15 +188,17 @@ class _MyCartState extends State<MyCart> {
   void _placeOrder() {
     final user = Provider.of<UserModel?>(context, listen: false);
     List<Map<String, dynamic>> checkoutData = cartItems.map((item) {
+
       return {
+        'cartId': item['id'],
         'liquorId': item['liquorId'],
         'uuid': user!.uid,
         'liquorName': item['liquorName'],
         'quantity': item['quantity'],
         'image': item['image'],
+        'price': item['price'],
         'createdBy': item['createdBy'],
         'totalPrice': int.parse(item['price']) * int.parse(item['quantity']),
-        // Calculate total price per product
       };
     }).toList();
 

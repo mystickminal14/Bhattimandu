@@ -87,7 +87,7 @@ class _LiqourDetailState extends State<LiqourDetail> {
             children: [
               PagesHeader(
                 title: widget.category ?? 'Category',
-                route: '/liquor_category',
+                route: '/liquors',
               ),
               Container(
                 color: const Color(0xff1C1C2E),

@@ -44,10 +44,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const PagesHeader(
-              title: 'Payment',
-              route: '/my_cart',
-            ),
+            const PagesHeader(title: 'Payment', route: '/my_cart'),
             const SizedBox(height: 10),
             const StepProgressBar(currentStep: 1),
             const SizedBox(height: 10),
@@ -82,16 +79,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       _paymentMethodTile("Khalti", Icons.account_balance_wallet,
                           Colors.red.shade600),
                       _paymentMethodTile("Esewa", Icons.payment, Colors.green),
-                      _paymentMethodTile("Cash on Delivery", Icons.money,
-                          Colors.red.shade600),
+                      _paymentMethodTile(
+                          "Cash on Delivery", Icons.money, Colors.blue),
                     ],
                   ),
                 ),
               ),
             ),
             Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
               child: CustomBhattiBtn(
                 text: 'Place Order',
                 onPressed: () {
@@ -112,11 +108,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     final indTotal = price * quantity;
 
                     return {
+                      'cartId': item['cartId'],
                       'liquorId': item['liquorId'] ?? '',
                       'uuid': item['uuid'] ?? '',
                       'liquorName': item['liquorName'] ?? '',
                       'quantity': quantity.toString(),
-                      'totalPrice': item['totalPrice'],
+                      'totalPrice': item['totalPrice'] ?? '',
                       'createdBy': item['createdBy'],
                       'delivery': _addressController.text,
                       'image': item['image'] ?? '',
@@ -143,7 +140,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
 
   Widget _paymentMethodTile(String title, IconData icon, Color iconColor) {
-    bool isSelected = selectedPaymentMethod == title;
+    final isSelected = selectedPaymentMethod == title;
 
     return ListTile(
       leading: Icon(icon, color: iconColor),
@@ -176,8 +173,8 @@ class StepProgressBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildStepCircle(
-          isActive: true,
-          isCompleted: false,
+          isActive: currentStep >= 1,
+          isCompleted: currentStep > 1,
           stepNumber: 1,
           label: 'Payment',
         ),
@@ -187,13 +184,6 @@ class StepProgressBar extends StatelessWidget {
           isCompleted: currentStep > 2,
           stepNumber: 2,
           label: 'Summary',
-        ),
-        _buildStepDivider(isCompleted: currentStep > 2),
-        _buildStepCircle(
-          isActive: currentStep >= 3,
-          isCompleted: false,
-          stepNumber: 3,
-          label: 'Review',
         ),
       ],
     );

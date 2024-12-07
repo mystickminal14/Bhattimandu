@@ -1,5 +1,4 @@
 import 'package:bhattimandu/components/liquor_card/liqour_detail.dart';
-import 'package:bhattimandu/components/loader/bhatti_loader.dart';
 import 'package:bhattimandu/database/authentication.dart';
 import 'package:bhattimandu/firebase_options.dart';
 import 'package:bhattimandu/model/user_model.dart';
@@ -7,11 +6,7 @@ import 'package:bhattimandu/pages/bottom_navigation/buyer_navigation.dart';
 import 'package:bhattimandu/pages/bottom_navigation/seller_navigation.dart';
 import 'package:bhattimandu/pages/buyer/Summary.dart';
 import 'package:bhattimandu/pages/buyer/checkout.dart';
-import 'package:bhattimandu/pages/buyer/my_cart.dart';
-import 'package:bhattimandu/pages/seller/add-liquor.dart';
 import 'package:bhattimandu/pages/flashing_page.dart';
-import 'package:bhattimandu/pages/seller/seller.dart';
-import 'package:bhattimandu/pages/seller/view_liquor.dart';
 import 'package:bhattimandu/pages/session/sign_in.dart';
 import 'package:bhattimandu/pages/session/sign_up.dart';
 import 'package:bhattimandu/wrapper.dart';
@@ -66,10 +61,11 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => const BhattiFlashingPage(),
-          '/add_liquor': (context) => const SellerNavigation(index: 2),
-          '/orders': (context) => const SellerNavigation(index: 3),
-          '/liquors': (context) => const SellerNavigation(index: 1),
-          '/seller_account': (context) => const SellerNavigation(index: 4),
+
+          '/add_liquor': (context) => const SellerNavigation(index: 1),
+          '/orders': (context) => const SellerNavigation(index: 2),
+          '/liquors': (context) => const SellerNavigation(index: 0),
+          '/seller_account': (context) => const SellerNavigation(index: 3),
 
           '/wrapper': (context) => const Wrapper(),
           '/bhatti': (context) => const BhattiFlashingPage(),

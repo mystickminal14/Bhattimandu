@@ -88,7 +88,7 @@ class _DisplayCatState extends State<DisplayCat> {
             children: [
               PagesHeader(
                 title: widget.category ?? 'Category',
-                route: '/',
+                route: '/liquor_category',
               ),
               Container(
                 color: const Color(0xff1C1C2E),

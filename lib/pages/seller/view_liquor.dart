@@ -113,8 +113,6 @@ class _ViewLiquorState extends State<ViewLiquor> {
                             ),
                             const SizedBox(width:18),
                             CustomButtonIcon( onPressed: () {
-
-
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -431,7 +429,6 @@ class _ViewLiquorState extends State<ViewLiquor> {
                             )
                           ],
                         ),
-
                         Text(
                           liquors[0]['liquor']['desc'],
                           style: const TextStyle(
@@ -440,6 +437,69 @@ class _ViewLiquorState extends State<ViewLiquor> {
                           ),
                           textAlign: TextAlign.justify,
                           softWrap: true,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Review',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                                fontFamily: 'poppins',
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 5,),
+                        Wrap(
+                          spacing: 8.0,
+                          runSpacing: 8.0,
+                          children: liquors[0]['liquor']['reviews'].isNotEmpty
+                              ? liquors[0]['liquor']['reviews'].map<Widget>((review) {
+                            return Card(
+                              color: const Color(0xff1C1C2E),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+
+                                    Row(
+                                      children: [
+                                        const Icon(Icons.star, color: Colors.amber),
+                                        const SizedBox(width: 8),
+                                        Text("Rating: ${review['rating']}/5"),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      review['review'],
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).toList()
+                              : [
+                            const Card(
+                              color:  Color(0xff1C1C2E),
+                              child: Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Center(
+                                  child: Text(
+                                    "No reviews available.",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         )
                       ],
                     ),
