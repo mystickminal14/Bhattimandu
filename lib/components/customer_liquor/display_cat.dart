@@ -1,4 +1,5 @@
 import 'package:bhattimandu/components/card/Layout.dart';
+import 'package:bhattimandu/components/customer_liquor/liquorLayout.dart';
 import 'package:bhattimandu/components/pages_header.dart';
 import 'package:bhattimandu/database/product_controller.dart';
 import 'package:bhattimandu/model/user_model.dart';
@@ -87,7 +88,7 @@ class _DisplayCatState extends State<DisplayCat> {
             children: [
               PagesHeader(
                 title: widget.category ?? 'Category',
-                route: '/liquors',
+                route: '/',
               ),
               Container(
                 color: const Color(0xff1C1C2E),
@@ -152,7 +153,7 @@ class _DisplayCatState extends State<DisplayCat> {
                     ),
                   ),
                 )
-                    : Layout(categories: filteredLiquorData),
+                    : LiquorLayout(categories: filteredLiquorData),
               ),
             ],
           ),

@@ -5,6 +5,9 @@ import 'package:bhattimandu/firebase_options.dart';
 import 'package:bhattimandu/model/user_model.dart';
 import 'package:bhattimandu/pages/bottom_navigation/buyer_navigation.dart';
 import 'package:bhattimandu/pages/bottom_navigation/seller_navigation.dart';
+import 'package:bhattimandu/pages/buyer/Summary.dart';
+import 'package:bhattimandu/pages/buyer/checkout.dart';
+import 'package:bhattimandu/pages/buyer/my_cart.dart';
 import 'package:bhattimandu/pages/seller/add-liquor.dart';
 import 'package:bhattimandu/pages/flashing_page.dart';
 import 'package:bhattimandu/pages/seller/seller.dart';
@@ -67,6 +70,7 @@ class MyApp extends StatelessWidget {
           '/orders': (context) => const SellerNavigation(index: 3),
           '/liquors': (context) => const SellerNavigation(index: 1),
           '/seller_account': (context) => const SellerNavigation(index: 4),
+
           '/wrapper': (context) => const Wrapper(),
           '/bhatti': (context) => const BhattiFlashingPage(),
           '/detail': (context) => const LiqourDetail(),
@@ -78,6 +82,8 @@ class MyApp extends StatelessWidget {
           '/dashboard': (context) => const BuyerNavigation(index: 2),
           '/my_order': (context) => const BuyerNavigation(index: 3),
           '/my_account': (context) => const BuyerNavigation(index: 4),
+          '/checkout': (context) => const CheckoutPage(),
+          '/summary': (context) => const OrderSummary(),
 
         },
       ),

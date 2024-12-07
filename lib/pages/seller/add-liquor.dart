@@ -82,9 +82,7 @@ class _AddLiquorState extends State<AddLiquor> {
     return isLoading
         ? const BhattiLoader()
         : Scaffold(
-      
             body: SafeArea(
-
                 child: Container(
                     width: double.infinity,
                     padding:null,

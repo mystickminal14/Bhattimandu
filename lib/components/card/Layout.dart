@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:bhattimandu/components/card/individual_liquor.dart';
+import 'package:bhattimandu/pages/buyer/view_liquor_data.dart';
 import 'package:bhattimandu/pages/seller/view_liquor.dart';
 import 'package:flutter/material.dart';
 
@@ -67,7 +68,7 @@ class _LayoutState extends State<Layout> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ViewLiquor(
+                          builder: (context) => ViewLiquorData(
                             liquorId: liquorId,
                           ),
                         ),

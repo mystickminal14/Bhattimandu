@@ -220,7 +220,7 @@ class LiquorService {
     try {
       final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('liquors')
-          .where('category', isEqualTo: category)  // Filter by category
+          .where('category', isEqualTo: category)
           .get();
 
       if (querySnapshot.docs.isEmpty) {
@@ -229,7 +229,8 @@ class LiquorService {
 
       return querySnapshot.docs.map((doc) {
         final liquorData = doc.data() as Map<String, dynamic>;
-        return {...liquorData, 'id': doc.id};  // Add the doc ID to the data
+        return {'liquor': {...liquorData, 'id': doc.id}
+        };  // Add the doc ID to the data
       }).toList();
     } catch (e) {
       throw Exception("Failed to fetch liquors by category: $e");
