@@ -194,4 +194,28 @@ class AuthenticationService {
       );
     }
   }
+
+
+  Future<void> updateUserProfile(
+      BuildContext context, String uuid, Map<String, dynamic> updates) async {
+    try {
+      DocumentReference userDocRef =
+      FirebaseFirestore.instance.collection('users').doc(uuid);
+
+      await userDocRef.update(updates);
+
+      QuickAlert.showAlert(
+        context,
+        "User profile updated successfully!",
+        AlertType.success,
+      );
+    } catch (e) {
+      // Handle and display error alert
+      QuickAlert.showAlert(
+        context,
+        "Error updating user profile: ${e.toString()}",
+        AlertType.error,
+      );
+    }
+  }
 }

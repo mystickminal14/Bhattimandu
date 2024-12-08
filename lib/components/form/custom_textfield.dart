@@ -12,7 +12,8 @@ class CustomTextField extends StatefulWidget {
   final bool isObscure;
   final int? maxLines;
   final VoidCallback? onIconPressed;
-  final String? initialValue; // Initial value for the field
+  final String? initialValue;
+  // Initial value for the field
 
   const CustomTextField({
     super.key,

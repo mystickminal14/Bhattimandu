@@ -9,7 +9,7 @@ class Validators {
     return null;
   }
 
-  static String? validateUserFarmName(String value) {
+  static String? validateFullName(String value) {
     if (value.isEmpty) {
       return 'Name cannot be empty';
     }
