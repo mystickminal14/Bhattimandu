@@ -6,6 +6,7 @@ import 'package:bhattimandu/components/loader/bhatti_loader.dart';
 import 'package:bhattimandu/database/authentication.dart';
 import 'package:bhattimandu/database/product_controller.dart';
 import 'package:bhattimandu/model/user_model.dart';
+import 'package:bhattimandu/pages/seller/update_seller_pp.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -128,12 +129,12 @@ class _SellerAccountState extends State<SellerAccount> {
                               const SizedBox(height: 20),
                               _buildTiles(const Icon(Icons.person,color: Colors.white,), 'Account Information',
                                   () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) => EditProfile(sellerData: sellerData),
-                                //   ),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => UpdateSellerPp(sellerData: sellerData),
+                                  ),
+                                );
                               }),
                               const SizedBox(height: 5),
                               _buildTiles(const FaIcon(FontAwesomeIcons.wineBottle,color: Colors.white,) , 'My Liquors', () {

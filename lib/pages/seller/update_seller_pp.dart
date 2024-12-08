@@ -16,26 +16,26 @@ import 'package:provider/provider.dart';
 import '../../components/alert/validation.dart';
 import '../../components/form/custom_textfield.dart';
 
-class UpdateProfile extends StatefulWidget {
-  final Map<String, dynamic>? buyerData;
+class UpdateSellerPp extends StatefulWidget {
+  final Map<String, dynamic>? sellerData;
 
-  const UpdateProfile({super.key, this.buyerData});
+  const UpdateSellerPp({super.key, this.sellerData});
 
   @override
-  State<UpdateProfile> createState() => _UpdateProfileState();
+  State<UpdateSellerPp> createState() => _UpdateSellerPpState();
 }
 
-class _UpdateProfileState extends State<UpdateProfile> {
-   String name = '',phone='',email='',password='';
+class _UpdateSellerPpState extends State<UpdateSellerPp> {
+  String name = '',phone='',email='',password='';
 
   @override
   void initState() {
     super.initState();
-    if (widget.buyerData != null) {
-    name = widget.buyerData!['fullName'] ?? '';
-    email = _emailController.text = widget.buyerData!['email'] ?? '';
-    phone=   _phoneController.text = widget.buyerData!['phone'] ?? '';
-    password=   _phoneController.text = widget.buyerData!['password'] ?? '';
+    if (widget.sellerData != null) {
+      name = widget.sellerData!['fullName'] ?? '';
+      email = _emailController.text = widget.sellerData!['email'] ?? '';
+      phone=   _phoneController.text = widget.sellerData!['phone'] ?? '';
+      password=   _phoneController.text = widget.sellerData!['password'] ?? '';
 
     }
   }
@@ -47,8 +47,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
   final _formKey = GlobalKey<FormState>();
   String _base64Image = "";
   final picker = ImagePicker();
- bool isLoading=false;
- bool isRegistered=false;
+  bool isLoading=false;
+  bool isRegistered=false;
   uploadImg() async {
     final XFile? pickedImage2 =
     await picker.pickImage(source: ImageSource.gallery);
@@ -88,54 +88,54 @@ class _UpdateProfileState extends State<UpdateProfile> {
       isLoading = true;
     });
 
-      try {
-        final password = widget.buyerData!['password'];
-        await AuthenticationService().updateUserProfile(
-          context,
-          widget.buyerData!['id'],
-          {
-            'email': email,
-            'password': password,
-            'fullName':name,
-            'phone': phone,
-            'image': _base64Image,
-            'role':'buyer'
-          },
-        );
+    try {
+      final password = widget.sellerData!['password'];
+      await AuthenticationService().updateUserProfile(
+        context,
+        widget.sellerData!['id'],
+        {
+          'email': email,
+          'password': password,
+          'fullName':name,
+          'phone': phone,
+          'image': _base64Image,
+          'role':'seller'
+        },
+      );
 
-        // Show success alert
-        QuickAlert.showAlert(
-          context,
-          'Account Updated Successfully',
-          AlertType.success,
-        );
-        setState(() {
-          isLoading = false;
-        });
-        Navigator.pushReplacementNamed(context, '/my_account');
-      } catch (e) {
-        // Handle error if update fails
-        QuickAlert.showAlert(
-          context,
-          'Error updating profile: $e',
-          AlertType.error,
-        );
-        setState(() {
-          isLoading = false;
-        });
-      } finally {
-        // Reset loading state
-        setState(() {
-          isLoading = false;
-        });
-      }
+      // Show success alert
+      QuickAlert.showAlert(
+        context,
+        'Account Updated Successfully',
+        AlertType.success,
+      );
+      setState(() {
+        isLoading = false;
+      });
+      Navigator.pushReplacementNamed(context, '/seller_account');
+    } catch (e) {
+      // Handle error if update fails
+      QuickAlert.showAlert(
+        context,
+        'Error updating profile: $e',
+        AlertType.error,
+      );
+      setState(() {
+        isLoading = false;
+      });
+    } finally {
+      // Reset loading state
+      setState(() {
+        isLoading = false;
+      });
     }
-  
+  }
+
 
   @override
   Widget build(BuildContext context) {
     final base64Image =
-        widget.buyerData!['image'] ?? '';
+        widget.sellerData!['image'] ?? '';
     final user = Provider.of<UserModel?>(context, listen: false);
 
     Uint8List? imageBytes;
@@ -152,7 +152,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
         width: double.infinity,
         child: Column(
           children: [
-            const PagesHeader(title: 'Update Profile', route: '/my_account'),
+            const PagesHeader(title: 'Update Profile', route: '/seller_account'),
             Expanded(child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child:
@@ -172,8 +172,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     wid: 2.5,
                     height: 120,
                   ),
-                   const SizedBox(height: 10,),
-                   CustomTextField(
+                  const SizedBox(height: 10,),
+                  CustomTextField(
                     label: 'FullName',
                     onChanged: (value) {
                       setState(() {
@@ -189,15 +189,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         fontStyle: FontStyle.italic),
                     hintText: 'enter your name',
                   ),
-const SizedBox(height: 10,),
-                   CustomTextField(
+                  const SizedBox(height: 10,),
+                  CustomTextField(
                     label: 'Email',
                     onChanged: (value) {
                       setState(() {
                         email = value;
                       });
                     },
-                     initialValue: email,
+                    initialValue: email,
                     helperText: isRegistered
                         ? Validators.validateUserEmail(email)
                         : null,
@@ -209,14 +209,14 @@ const SizedBox(height: 10,),
                   ),
                   const SizedBox(height: 10,),
 
-                   CustomTextField(
+                  CustomTextField(
                     label: 'Password',
                     onChanged: (value) {
                       setState(() {
                         password = value;
                       });
                     },
-                     initialValue: password,
+                    initialValue: password,
 
                     helperText: isRegistered
                         ? Validators.validateUserPhone(name)
@@ -229,14 +229,14 @@ const SizedBox(height: 10,),
                   ),
                   const SizedBox(height: 10,),
 
-                   CustomTextField(
+                  CustomTextField(
                     label: 'Phone',
                     onChanged: (value) {
                       setState(() {
                         phone = value;
                       });
                     },
-                     initialValue: phone,
+                    initialValue: phone,
                     helperText: isRegistered
                         ? Validators.validateUserPhone(phone)
                         : null,
