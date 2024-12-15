@@ -1,5 +1,6 @@
 import 'package:bhattimandu/model/user_model.dart';
 import 'package:bhattimandu/pages/buyer/buyer_dash.dart';
+import 'package:bhattimandu/pages/buyer/filterDashboard.dart';
 import 'package:bhattimandu/pages/buyer/liquor_category.dart';
 import 'package:bhattimandu/pages/buyer/my_account.dart';
 import 'package:bhattimandu/pages/buyer/my_cart.dart';
@@ -31,7 +32,7 @@ class _BuyerNavigationState extends State<BuyerNavigation> {
     List screenList = [
       const LiquorCategory(),
       const MyCart(),
-      const BuyerDash(),
+      const FilterDashboard(),
       const MyOrder(),
       const MyAccount()
     ];

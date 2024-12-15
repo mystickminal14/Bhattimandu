@@ -129,7 +129,24 @@ class LiquorService {
     }
   }
 
+  Future<List<Map<String, dynamic>>> getLiquors() async {
+    try {
+      final QuerySnapshot liquorSnapshot = await FirebaseFirestore.instance
+          .collection('liquors')
+          .get();
 
+
+      return liquorSnapshot.docs.map((liquorDoc) {
+        final liquorData = liquorDoc.data() as Map<String, dynamic>;
+        return {
+          'liquor': {...liquorData, 'id': liquorDoc.id},
+
+        };
+      }).toList();
+    } catch (e) {
+      throw Exception("Failed to fetch liquors with user data: $e");
+    }
+  }
   Future<List<Map<String, dynamic>>> getAllLiquorsWithUser() async {
     try {
       final QuerySnapshot liquorSnapshot = await FirebaseFirestore.instance
